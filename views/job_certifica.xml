@@ -9,6 +9,7 @@
                 <header>
                     <button name="action_validate" type="object" string="Valider" states="brouillon" class="oe_highlight"/>
                     <button name="print_job" string="Imprimer" type="object" states="valide" class="oe_highlight"/>
+                    <button name="send_job_certifica" string="Envoyer" type="object" states="valide" class="oe_highlight"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -24,6 +25,8 @@
                                 <field name="hire_date" />
                             </group>
                             <group>
+                                <field name="employee_name"/>
+                                <field name="email_id"/>
                                 <field name="occupied_job"/>
                                 <field name="manager"/>
                             </group>

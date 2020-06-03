@@ -21,12 +21,13 @@
     'images': ['static/description/icon.png'],
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'data/sequence.xml',
+        'data/mail_template.xml',
         'report/job_report.xml',
         'views/job_certifica.xml',
         'views/views.xml',

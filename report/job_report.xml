@@ -7,8 +7,7 @@
 		model="job.certifica"
 		report_type="qweb-pdf"
 		name="attestation.job"
-		print_report_name="'Attestation du Travail'"
-		paperformat="paperformat_page"/>
+		print_report_name="'Attestation du Travail'"/>
 
         <template id="job">
         
