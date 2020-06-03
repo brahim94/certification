@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='job_certifica_view_form' model='ir.ui.view'>
+            <field name="name">job.certifica.form</field>
+            <field name="model">job.certifica</field>
+            <field name="arch" type="xml">
+               <form>
+                <header>
+                    <button name="action_validate" type="object" string="Valider" states="brouillon" class="oe_highlight"/>
+                    <button name="print_job" string="Imprimer" type="object" states="valide" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class='oe_title'>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                        <group col="2">
+                            <group >
+                                <field name="company_name" />
+                                <field name="cnss_number"/>
+                                <field name="hire_date" />
+                            </group>
+                            <group>
+                                <field name="occupied_job"/>
+                                <field name="manager"/>
+                            </group>
+                        </group>
+                </sheet>
+             </form>
+            </field>
+        </record>
+
+
+        <record id="job_certifica_view_tree" model="ir.ui.view">
+            <field name="name">job.certifica.tree</field>
+            <field name="model">job.certifica</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_name"/>
+                    <field name="cnss_number"/>
+                    <field name="hire_date"/>
+                    <field name="occupied_job"/>
+                    <field name="manager"/>
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="attestation_list_action">
+            <field name="name">Atestation de travail</field>
+            <field name="res_model">job.certifica</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> créer votre première Atestation du travail </p>
+            </field>
+        </record>
+
+    <menuitem name="Atestations" id="menu_root" sequence="115" groups="base.group_user" web_icon="attetstation,static/description/icon.png"/>
+    <!-- <menuitem id="fleet_top_menu" name="Fleet" sequence="2" groups ="base.group_user"/> -->
+    <menuitem name="Atestation du Travail"  parent="menu_root" id="attetstation_list_menu" sequence="100" groups ="base.group_user"/>
+    <menuitem action="attestation_list_action" parent="attetstation_list_menu" id="attetstation_list_menu_item" sequence="2"/>
+
+</odoo>

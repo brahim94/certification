@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="attestation.list">
+      <field name="name">attestation list</field>
+      <field name="model">attestation.attestation</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="attestation.action_window">
+      <field name="name">attestation window</field>
+      <field name="res_model">attestation.attestation</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="attestation.action_server">
+      <field name="name">attestation server</field>
+      <field name="model_id" ref="model_attestation_attestation"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="attestation" id="attestation.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="attestation.menu_1" parent="attestation.menu_root"/>
+    <menuitem name="Menu 2" id="attestation.menu_2" parent="attestation.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="attestation.menu_1_list" parent="attestation.menu_1"
+              action="attestation.action_window"/>
+    <menuitem name="Server to list" id="attestation" parent="attestation.menu_2"
+              action="attestation.action_server"/>
+-->
+  </data>
+</odoo>
