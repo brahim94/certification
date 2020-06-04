@@ -6,7 +6,7 @@
         <record id="seq_trajet_order" model="ir.sequence">
             <field name="name">Job Certifica Order</field>
             <field name="code">job.order</field>
-            <field name="prefix">ATTEST.TRV</field>
+            <field name="prefix">ATTESTTRV</field>
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>
         </record>
@@ -14,7 +14,15 @@
          <record id="seq_salary_order" model="ir.sequence">
             <field name="name">Salary Certifica Order</field>
             <field name="code">salary.order</field>
-            <field name="prefix">ATTEST.SAL</field>
+            <field name="prefix">ATTESTSAL</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_domiciliation_order" model="ir.sequence">
+            <field name="name">Domiciliation Certifica Order</field>
+            <field name="code">domiciliation.order</field>
+            <field name="prefix">DOMSALIRR</field>
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>
         </record>

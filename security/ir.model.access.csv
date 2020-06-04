@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_job_certifica,access_job_certifica,model_job_certifica,base.group_user,1,1,1,1
 access_salary_certifica,access_salary_certifica,model_salary_certifica,base.group_user,1,1,1,1
+access_domiciliation_certifica,access_domiciliation_certifica,model_domiciliation_certifica,base.group_user,1,1,1,1

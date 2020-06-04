@@ -80,6 +80,46 @@ class salary_certification(models.Model):
         template.send_mail(self.id, force_send=True)
         self.state = 'envoyer'
 
+class domiciliation_certification(models.Model):
+    _name = 'domiciliation.certifica'
+    _description = 'Attestation de domiciliation Model'
+
+    name = fields.Char(string='Certifica salary Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
+    company_id = fields.Char(string='Nom de la société')
+    employee_id = fields.Char(string="Nom de l'Employer")
+    email_id = fields.Char(string="Email")
+    write_date = fields.Datetime(string='Write Date')
+    months_number = fields.Integer(string='N° Mois')
+    name_bank = fields.Char(string='Banque')
+    name_agency = fields.Char(string='Agence')
+    rib_number = fields.Integer(string='N° RIB')
+    manager_id = fields.Char(string='Nom responsable')
+    state = fields.Selection([
+    ('brouillon', 'Brouillion'),
+    ('valide', 'Validé'),
+    ('envoyer', 'Envoyé'),
+    ], setting='State', readonly=True, default='brouillon')
+
+    @api.model 
+    def create(self, vals):
+        if vals.get('name', ('New')) == ('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('domiciliation.order') or ('New')
+        result = super(domiciliation_certification, self).create(vals)
+        return result 
+
+    def action_validate_domiciliation(self):
+        for rec in self:
+            rec.state = 'valide'
+
+    def print_domiciliation(self):
+        return self.env.ref('attestation.action_report_domiciliation').report_action(self)
+
+    def send_domiciliation_certifica(self):
+        template_id = self.env.ref('attestation.domiciliation_certifica_email_template').id 
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
+        self.state = 'envoyer'
+
     
 
     

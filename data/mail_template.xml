@@ -44,5 +44,26 @@
                 <field name="report_name">Attestation de salaire_${object.name}</field>
         </record>
 
+         <record id="domiciliation_certifica_email_template" model="mail.template">
+            <field name="name">DOMICILIATION DE SALAIRE IRREVOCABLE: envoie par email</field>
+             <field name="model_id" ref="attestation.model_domiciliation_certifica"/>
+            <field name="email_from">xyz@gmail.com</field>
+            <field name="email_to">${object.email_id}</field> 
+            <field name="subject">Domoiciliation De Salaire ( Mme/Ms ${object.employee_id})</field>    
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Chèr(e) ${object.employee_id}
+                        <br /><br/>
+                        voilà votre domiciliation de salaire irrévocable
+                        <br /><br />
+                        n'hzsitez pas de nous contacter si vous avez des questions
+                    </p>
+                </div>
+            </field>
+                <field name="report_template" ref="action_report_domiciliation"/>
+                <field name="report_name">Domiciliation de salaire Irrécovable_${object.name}</field>
+        </record>
+
     </data>
 </odoo>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='domiciliation_certifica_view_form' model='ir.ui.view'>
+            <field name="name">domiciliation.certifica.form</field>
+            <field name="model">domiciliation.certifica</field>
+            <field name="arch" type="xml">
+               <form>
+                <header>
+                    <button name="action_validate_domiciliation" type="object" string="Valider" states="brouillon" class="oe_highlight"/>
+                    <button name="print_domiciliation" string="Imprimer" type="object" states="valide" class="oe_highlight"/>
+                    <button name="send_domiciliation_certifica" string="Envoyer" type="object" states="valide" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class='oe_title'>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                        <group col="2">
+                            <group >
+                                <field name="company_id" />
+                                <field name="employee_id"/>
+                                <field name="email_id"/>
+                                <field name="manager_id"/>
+                            </group>
+                            <group>
+                                <field name="name_bank"/>
+                                <field name="name_agency"/>
+                                <field name="rib_number"/>
+                                <!--field name="manager"/-->
+                            </group>
+                        </group>
+                </sheet>
+             </form>
+            </field>
+        </record>
+
+
+        <record id="domiciliation_certifica_view_tree" model="ir.ui.view">
+            <field name="name">domiciliation.certifica.tree</field>
+            <field name="model">domiciliation.certifica</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_id"/>
+                    <field name="employee_id"/>
+                    <field name="email_id"/>
+                    <field name="manager_id"/>
+                     <field name="name_bank"/>
+                    <field name="name_agency"/>
+                    <field name="rib_number"/>
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="attestation_domiciliation_action">
+            <field name="name">Domiciliation de salaire irrevocable</field>
+            <field name="res_model">domiciliation.certifica</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> créer votre première Domiciliation de salaire Irrévocable </p>
+            </field>
+        </record>
+
+
+    <menuitem name="Domiciliation"
+    parent="menu_root"
+    id="attetstation_list_menu_tree"
+    sequence="101"
+    action="attestation_domiciliation_action"
+    groups="base.group_user"/>
+
+    <!--menuitem action="attestation_salary_action"
+    parent="attetstation_list_menu_two"
+    id="attetstation_list_menu_item_two" 
+    sequence="2"/-->
+
+</odoo>
