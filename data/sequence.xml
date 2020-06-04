@@ -11,5 +11,14 @@
             <field name="company_id" eval="False"/>
         </record>
 
+         <record id="seq_salary_order" model="ir.sequence">
+            <field name="name">Salary Certifica Order</field>
+            <field name="code">salary.order</field>
+            <field name="prefix">ATTEST.SAL</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+
     </data>
 </odoo>

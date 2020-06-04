@@ -43,6 +43,45 @@ class Job_Certification(models.Model):
         template.send_mail(self.id, force_send=True)
         self.state = 'envoyer'
 
+class salary_certification(models.Model):
+    _name = 'salary.certifica'
+    _description = 'Attestation de salaire Model'
+
+    name = fields.Char(string='Certifica salary Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
+    company = fields.Char(string='Nom de la société')
+    employee = fields.Char(string="Nom de l'Employer")
+    email_id = fields.Char(string="Email")
+    write_date = fields.Datetime(string='Write Date')
+    hire = fields.Date(string="Date d'embauche")
+    company_date_create = fields.Date(string="Date de création de la société")
+    state = fields.Selection([
+    ('brouillon', 'Brouillion'),
+    ('valide', 'Validé'),
+    ('envoyer', 'Envoyé'),
+    ], setting='State', readonly=True, default='brouillon')
+
+    @api.model 
+    def create(self, vals):
+        if vals.get('name', ('New')) == ('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('salary.order') or ('New')
+        result = super(salary_certification, self).create(vals)
+        return result 
+
+    def action_validate_salary(self):
+        for rec in self:
+            rec.state = 'valide'
+
+    def print_salary(self):
+        return self.env.ref('attestation.action_report_salary').report_action(self)
+
+    def send_salary_certifica(self):
+        template_id = self.env.ref('attestation.salary_certifica_email_template').id 
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
+        self.state = 'envoyer'
+
+    
+
     
 
     #soft_copy = fields.Binary(string="Soft Copy")

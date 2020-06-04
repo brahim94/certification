@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='salary_certifica_view_form' model='ir.ui.view'>
+            <field name="name">salary.certifica.form</field>
+            <field name="model">salary.certifica</field>
+            <field name="arch" type="xml">
+               <form>
+                <header>
+                    <button name="action_validate_salary" type="object" string="Valider" states="brouillon" class="oe_highlight"/>
+                    <button name="print_salary" string="Imprimer" type="object" states="valide" class="oe_highlight"/>
+                    <button name="send_salary_certifica" string="Envoyer" type="object" states="valide" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class='oe_title'>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                        <group col="2">
+                            <group >
+                                <field name="company" />
+                                <!--field name="cnss_number"/-->
+                                <field name="hire"/>
+                            </group>
+                            <group>
+                                <field name="employee"/>
+                                <field name="email_id"/>
+                                <field name="company_date_create"/>
+                                <!--field name="manager"/-->
+                            </group>
+                        </group>
+                </sheet>
+             </form>
+            </field>
+        </record>
+
+
+        <record id="salary_certifica_view_tree" model="ir.ui.view">
+            <field name="name">salary.certifica.tree</field>
+            <field name="model">salary.certifica</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee"/>
+                    <field name="hire"/>
+                    <field name="company_date_create"/>
+                    <field name="company"/>
+                    <field name="email_id"/>
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="attestation_salary_action">
+            <field name="name">Atestation de salaire</field>
+            <field name="res_model">salary.certifica</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> créer votre première Atestation de salaire </p>
+            </field>
+        </record>
+
+
+    <menuitem name="Attestation de salaire"
+    parent="menu_root"
+    id="attetstation_list_menu_two"
+    sequence="101"
+    action="attestation_salary_action"
+    groups="base.group_user"/>
+
+    <!--menuitem action="attestation_salary_action"
+    parent="attetstation_list_menu_two"
+    id="attetstation_list_menu_item_two" 
+    sequence="2"/-->
+
+
+
+
+</odoo>

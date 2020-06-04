@@ -60,9 +60,28 @@
             </field>
         </record>
 
-    <menuitem name="Atestations" id="menu_root" sequence="115" groups="base.group_user" web_icon="attetstation,static/description/icon.png"/>
-    <!-- <menuitem id="fleet_top_menu" name="Fleet" sequence="2" groups ="base.group_user"/> -->
-    <menuitem name="Atestation du Travail"  parent="menu_root" id="attetstation_list_menu" sequence="100" groups ="base.group_user"/>
-    <menuitem action="attestation_list_action" parent="attetstation_list_menu" id="attetstation_list_menu_item" sequence="2"/>
+    <menuitem name="Atestations" 
+    id="menu_root" 
+    sequence="115" 
+    groups="base.group_user" 
+    web_icon="attetstation,static/description/icon.png"/>
+
+    <menuitem name="Atestation de Travail"  
+    parent="menu_root" 
+    id="attetstation_list_menu" 
+    sequence="100" 
+    action="attestation_list_action"
+    groups ="base.group_user"/>
+
+    <!--menuitem 
+    parent="attetstation_list_menu"
+    id="attetstation_list_menu_item" 
+    sequence="2"/-->
+
+    <!--menuitem name="Attestation de salaire"
+    parent="menu_root"
+    id="attetstation_list_menu_two"
+    sequence="90"
+    groups="base.group_user"/-->
 
 </odoo>
