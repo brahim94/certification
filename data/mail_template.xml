@@ -40,7 +40,7 @@
                     </p>
                 </div>
             </field>
-                <field name="report_template" ref="action_report_job"/>
+                <field name="report_template" ref="action_report_salary"/>
                 <field name="report_name">Attestation de salaire_${object.name}</field>
         </record>
 

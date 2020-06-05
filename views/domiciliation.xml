@@ -20,16 +20,16 @@
                     </div>
                         <group col="2">
                             <group >
-                                <field name="company_id" />
-                                <field name="employee_id"/>
-                                <field name="email_id"/>
-                                <field name="manager_id"/>
+                                <field name="company" />
+                                <field name="employee"/>
+                                <field name="email"/>
+                                <field name="manager"/>
                             </group>
                             <group>
                                 <field name="name_bank"/>
                                 <field name="name_agency"/>
                                 <field name="rib_number"/>
-                                <!--field name="manager"/-->
+                                <field name="months_number"/>
                             </group>
                         </group>
                 </sheet>
@@ -43,13 +43,14 @@
             <field name="model">domiciliation.certifica</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="company_id"/>
-                    <field name="employee_id"/>
-                    <field name="email_id"/>
-                    <field name="manager_id"/>
+                    <field name="company"/>
+                    <field name="employee"/>
+                    <field name="email"/>
+                    <field name="manager"/>
                      <field name="name_bank"/>
                     <field name="name_agency"/>
                     <field name="rib_number"/>
+                    <field name="months_number"/>
                 </tree> 
             </field>
         </record>

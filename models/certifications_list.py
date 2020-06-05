@@ -10,8 +10,8 @@ class Job_Certification(models.Model):
 
     name = fields.Char(string='Certifica Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
     company_name = fields.Char(string='Nom de la société')
-    cnss_number = fields.Integer(string='C.N.S.S. N°')
-    write_date = fields.Datetime(string='Write Date')
+    cnss_number = fields.Char(string='C.N.S.S. N°')
+    write_date = fields.Date(string='Write Date')
     hire_date = fields.Date(string="Date d'embauche")
     occupied_job = fields.Char(string="Fiche de poste")
     manager = fields.Char(string="Nom du responsable")
@@ -51,9 +51,11 @@ class salary_certification(models.Model):
     company = fields.Char(string='Nom de la société')
     employee = fields.Char(string="Nom de l'Employer")
     email_id = fields.Char(string="Email")
-    write_date = fields.Datetime(string='Write Date')
+    manager = fields.Char(string="Nom de responsable")
+    write_date = fields.Date(string='Write Date')
+    amount_money = fields.Char(string='Salaire brut en Dh')
     hire = fields.Date(string="Date d'embauche")
-    company_date_create = fields.Date(string="Date de création de la société")
+    salary_date_create = fields.Date(string="Date de paye")
     state = fields.Selection([
     ('brouillon', 'Brouillion'),
     ('valide', 'Validé'),
@@ -84,16 +86,16 @@ class domiciliation_certification(models.Model):
     _name = 'domiciliation.certifica'
     _description = 'Attestation de domiciliation Model'
 
-    name = fields.Char(string='Certifica salary Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
-    company_id = fields.Char(string='Nom de la société')
-    employee_id = fields.Char(string="Nom de l'Employer")
-    email_id = fields.Char(string="Email")
-    write_date = fields.Datetime(string='Write Date')
+    name = fields.Char(string='Certifica domiciliation Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
+    company = fields.Char(string='Nom de la société')
+    employee = fields.Char(string="Nom de l'Employer")
+    email = fields.Char(string="Email")
+    write_date = fields.Date(string='Write Date')
     months_number = fields.Integer(string='N° Mois')
     name_bank = fields.Char(string='Banque')
     name_agency = fields.Char(string='Agence')
     rib_number = fields.Integer(string='N° RIB')
-    manager_id = fields.Char(string='Nom responsable')
+    manager = fields.Char(string='Nom responsable')
     state = fields.Selection([
     ('brouillon', 'Brouillion'),
     ('valide', 'Validé'),

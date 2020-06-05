@@ -3,38 +3,71 @@
 
 	<report
 		id="action_report_domiciliation"
-		string="Domiciliation Certificat"
+		string="Domiciliation de Salaire Irrévocable"
 		model="domiciliation.certifica"
 		report_type="qweb-pdf"
 		name="attestation.domiciliation"
 		print_report_name="'Domiciliation de salaire irrévocable'"/>
 
         <template id="domiciliation">
-            <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-               
-                <div class="page">
-                    <div style="position:absolute;left:282.65px;top:52.12px" class="cls_003"><span class="cls_003">Entête</span></div>
-                    <div style="position:absolute;left:400.63px;top:69.76px" class="cls_004"><span class="cls_004">Casablanca, le </span><span class="cls_005">XXXXXXXX</span></div>
-                    <div style="position:absolute;left:174.86px;top:159.18px" class="cls_018"><span class="cls_018">DOMICILIATION DE SALAIRE IRREVOCABLE</span></div>
-                    <div style="position:absolute;left:74.30px;top:226.02px" class="cls_004"><span class="cls_004">Nous soussignés, </span><span class="cls_007">société </span><span class="cls_008">nom de la société</span><span class="cls_007"> </span><span class="cls_004">à Casablanca, nous nous engageons à virer</span></div>
-                    <div style="position:absolute;left:70.82px;top:240.54px" class="cls_004"><span class="cls_004">mensuellement et irrévocablement le salaire intégral et toutes indemnités à compter de mois</span></div>
-                    <div style="position:absolute;left:70.82px;top:254.85px" class="cls_009"><span class="cls_009">N° Mois</span><span class="cls_004"> :</span></div>
-                    <div style="position:absolute;left:238.97px;top:302.73px" class="cls_019"><span class="cls_019">Mr. </span><span class="cls_020">Le nom Employé</span></div>
-                    <!--div style="position:absolute;left:70.82px;top:365.25px" class="cls_004"><span class="cls_004">À son compte ouvert à </span><span class="cls_005">La banque & Agence</span><span class="cls_004">, sous le Numéro :</span></div-->
-                    <div style="position:absolute;left:270.29px;top:393.09px" class="cls_013"><span class="cls_013">N° RIB</span></div>
-                    <div style="position:absolute;left:84.62px;top:433.79px" class="cls_004"><span class="cls_004">Et ce jusqu’à main levée délivrée en bonne et due forme par la banque.</span></div>
-                    <div style="position:absolute;left:70.82px;top:483.95px" class="cls_004"><span class="cls_004">En cas de licenciement ou démission, et en général en cas de cessation des fonctions de</span></div>
-                    <div style="position:absolute;left:70.82px;top:498.23px" class="cls_004"><span class="cls_004">l’intéressé pour quelque motif que ce soit, nous nous engageons à en aviser la banque dans</span></div>
-                    <div style="position:absolute;left:70.82px;top:512.63px" class="cls_004"><span class="cls_004">les  meilleurs  délais  et  assurer  la  liquidation  définitive  de  ses  droits  vis-à-vis  notre</span></div>
-                    <div style="position:absolute;left:70.82px;top:526.91px" class="cls_004"><span class="cls_004">établissement, par l’intermédiaire de son compte bancaire précité.</span></div>
-                    <div style="position:absolute;left:348.43px;top:593.27px" class="cls_007"><span class="cls_007">Directeur Ressources Humaines</span></div>
-                    <div style="position:absolute;left:361.03px;top:606.86px" class="cls_011"><span class="cls_011">Le nom de responsable</span></div>
-                    <div style="position:absolute;left:290.21px;top:795.88px" class="cls_017"><span class="cls_017">Pied</span></div>
+        
+        <t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+			<t t-call="web.external_layout">
+                <style>
+                div {
+                        font-size: 115%;
+                    }    
+                </style>
+
+                <div style="position:absolute;left:0px;top:50.98px;width:20px">
+				<img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('EAN13', o.name, 500, 50)"/>
+			 </div>
+                    
+                <div style="position:absolute;left:150px;top:150.62px;text-align:center">
+                <h2><u>DOMICILIATION DE SALAIRE IRREVOCABLE</u></h2>
+                </div>
+
+                <div style="position:absolute;left:570.99px;top:5.98px">
+                    <span>Casablanca, le <span t-field="o.write_date"/></span>
+                </div>
+
+                <div style="position:relative;left:70.82px;top:270.26px">
+                    <span>Nous soussignés, société <span t-field="o.company"/> à Casablanca, nous nous engageons à virer mensuellement 
+                    et irrévocablement le salaire intégral et toutes indemnités à compter 
+                    <p>de mois <span t-field="o.months_number"/>: </p></span>
+                </div>
+
+                <div style="position:absolute;left:350px;top:380.97px;text-align:center;">
+                    <u><span class="cls_017">Mr.</span>
+                    <span t-field="o.employee"/></u>
+                </div>
+
+                <div style="position:relative;left:70.82px;top:340px" class="cls_004">
+                    <span class="cls_004">À son compte ouvert à <span t-field="o.name_bank"/> - <span t-field="o.name_agency"/>
+                    , sous le Numéro : </span>
+                </div>
+
+                <div style="position:absolute;left:400px;top:500.97px" class="cls_004">    
+                    <h4 t-field="o.rib_number"/>
                 </div>
                 
-		    </t>
-            </t>
+                <div style="position:relative;left:70.82px;top:410.97px" class="cls_004">    
+                     Et ce jusqu’à main levée délivrée en bonne et due forme par la banque.
+                </div>   
+                   
+                <div style="position:relative;left:70.82px;top:490px;" class="cls_012">
+                    <span class="cls_012">En cas de licenciement ou démission, et en général en cas de cessation des fonctions <br> de l’intéressé pour quelque motif que ce soit, nous nous engageons à en aviser </br><br>la banque dans les meilleurs délais et assurer la liquidation définitive de ses droits</br> <br> vis-à-vis notre établissement, par l’intermédiaire de son compte bancaire précité.</br></span>
+                </div>
+                
+                <div style="position:absolute;left:570.99px;top:920px;text-align:center;" class="cls_004">
+                    <span class="cls_004">Directeur Ressources Humaines</span><p><span t-field="o.manager"/></p>
+                </div>
+                
+      
+        </t>             
+        </t>
+        </t>
         </template>
 
 </odoo>

@@ -21,14 +21,15 @@
                         <group col="2">
                             <group >
                                 <field name="company" />
-                                <!--field name="cnss_number"/-->
-                                <field name="hire"/>
-                            </group>
-                            <group>
                                 <field name="employee"/>
                                 <field name="email_id"/>
-                                <field name="company_date_create"/>
-                                <!--field name="manager"/-->
+                                <field name="manager"/>
+                            </group>
+                            <group>
+                                <field name="hire"/>
+                                <field name="salary_date_create"/>
+                                <field name="amount_money"/>
+                                
                             </group>
                         </group>
                 </sheet>
@@ -42,11 +43,13 @@
             <field name="model">salary.certifica</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="employee"/>
-                    <field name="hire"/>
-                    <field name="company_date_create"/>
                     <field name="company"/>
+                    <field name="employee"/>
                     <field name="email_id"/>
+                    <field name="manager"/>
+                    <field name="hire"/>
+                    <field name="salary_date_create"/>
+                    <field name="amount_money"/>
                 </tree> 
             </field>
         </record>
