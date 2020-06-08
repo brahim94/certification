@@ -9,19 +9,58 @@ class Job_Certification(models.Model):
     _description = 'Attestation Travail Model'
 
     name = fields.Char(string='Certifica Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
-    company_name = fields.Char(string='Nom de la société')
+    company_id = fields.Many2one(
+    'res.company',
+    'Company',
+    default=lambda self: self.env['res.company']._company_default_get('attestation')
+    )
     cnss_number = fields.Char(string='C.N.S.S. N°')
     write_date = fields.Date(string='Write Date')
-    hire_date = fields.Date(string="Date d'embauche")
-    occupied_job = fields.Char(string="Fiche de poste")
-    manager = fields.Char(string="Nom du responsable")
-    employee_name = fields.Char(string="Nom de l'Employer")
+    demand_date = fields.Datetime(string="Date demande")
+    send_date = fields.Datetime(string="Date envoi")
+    employee_id = fields.Many2one('hr.employee', string="Employee")
     email_id = fields.Char(string="Email")
     state = fields.Selection([
         ('brouillon', 'Brouillion'),
         ('valide', 'Validé'),
         ('envoyer', 'Envoyé'),
-        ], setting='State', readonly=True, default='brouillon')
+        ], setting='State', readonly=True, default='brouillon') 
+    
+    def _get_default_contrat(self):
+        return self.env['hr.contract'].search([], limit=1).id
+
+    contrat = fields.Many2one('hr.contract', string='Contrat', default=_get_default_contrat, domain=[])
+    
+    @api.onchange('employee_id')
+    def onchange_contrat_id(self):
+        self.contrat = self.employee_id.contract_id 
+
+    def _get_default_job(self): 
+        return self.env['hr.job'].search([], limit=1).id
+
+    fiche_poste = fields.Many2one('hr.job', string='Fiche de poste', default=_get_default_job, domain=[])
+    
+    @api.onchange('employee_id')
+    def onchange_id(self):
+        self.fiche_poste = self.employee_id.job_id
+    
+    def _get_default_hire(self):
+        return self.env['hr.contract'].search([('name', '=', 'date_start')], limit=1).id
+
+    date_hire = fields.Many2one('hr.contract', string="date d'embauche", default=_get_default_hire, domain=[('name', '=', 'date_start')])
+    
+    @api.onchange('employee_id')
+    def onchange_hire_id(self):
+        self.date_hire = self.contrat.date_start 
+    
+    def _get_default_manager(self):
+        return self.env['hr.employee'].search([('name', '=', 'parent_id')], limit=1).id
+
+    manager = fields.Many2one('hr.employee', string='Manager', default=_get_default_manager, domain=[('name', '=', 'parent_id')])
+    
+    @api.onchange('employee_id')
+    def onchange_fuel_product_id(self):
+        self.manager = self.employee_id.parent_id
     
     @api.model 
     def create(self, vals):
@@ -48,10 +87,13 @@ class salary_certification(models.Model):
     _description = 'Attestation de salaire Model'
 
     name = fields.Char(string='Certifica salary Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
-    company = fields.Char(string='Nom de la société')
-    employee = fields.Char(string="Nom de l'Employer")
+    company_id = fields.Many2one(
+    'res.company',
+    'Company',
+    default=lambda self: self.env['res.company']._company_default_get('attestation')
+    )
+    employee_id = fields.Many2one('hr.employee', string="Employee")
     email_id = fields.Char(string="Email")
-    manager = fields.Char(string="Nom de responsable")
     write_date = fields.Date(string='Write Date')
     amount_money = fields.Char(string='Salaire brut en Dh')
     hire = fields.Date(string="Date d'embauche")
@@ -61,6 +103,15 @@ class salary_certification(models.Model):
     ('valide', 'Validé'),
     ('envoyer', 'Envoyé'),
     ], setting='State', readonly=True, default='brouillon')
+
+    def _get_default_manager(self):
+        return self.env['hr.employee'].search([('name', '=', 'parent_id')], limit=1).id
+
+    manager = fields.Many2one('hr.employee', string='Manager', default=_get_default_manager, domain=[('name', '=', 'parent_id')])
+    
+    @api.onchange('employee_id')
+    def onchange_manager_id(self):
+        self.manager = self.employee_id.parent_id
 
     @api.model 
     def create(self, vals):
@@ -87,20 +138,34 @@ class domiciliation_certification(models.Model):
     _description = 'Attestation de domiciliation Model'
 
     name = fields.Char(string='Certifica domiciliation Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
-    company = fields.Char(string='Nom de la société')
-    employee = fields.Char(string="Nom de l'Employer")
+    company_id = fields.Many2one(
+    'res.company',
+    'Company',
+    default=lambda self: self.env['res.company']._company_default_get('attestation')
+    )
+    employee_id = fields.Many2one('hr.employee', string="Employee")
     email = fields.Char(string="Email")
     write_date = fields.Date(string='Write Date')
+    demand_date = fields.Datetime(string="Date demande")
+    send_date = fields.Datetime(string="Date envoi")
     months_number = fields.Integer(string='N° Mois')
     name_bank = fields.Char(string='Banque')
     name_agency = fields.Char(string='Agence')
-    rib_number = fields.Integer(string='N° RIB')
-    manager = fields.Char(string='Nom responsable')
+    rib_number = fields.Char(string='N° RIB')
     state = fields.Selection([
     ('brouillon', 'Brouillion'),
     ('valide', 'Validé'),
     ('envoyer', 'Envoyé'),
     ], setting='State', readonly=True, default='brouillon')
+
+    def _get_default_manager(self):
+        return self.env['hr.employee'].search([('name', '=', 'parent_id')], limit=1).id
+
+    manager = fields.Many2one('hr.employee', string='Manager', default=_get_default_manager, domain=[('name', '=', 'parent_id')])
+    
+    @api.onchange('employee_id')
+    def onchange_fuel_product_id(self):
+        self.manager = self.employee_id.parent_id
 
     @api.model 
     def create(self, vals):
@@ -125,20 +190,3 @@ class domiciliation_certification(models.Model):
     
 
     
-
-    #soft_copy = fields.Binary(string="Soft Copy")
-    #file_name = fields.Char(string="File Name") 
-
-    #def send_mail_func(self):
-    #    email_template = self.env.ref('module1.test_email_template')
-    #    attachment = {
-    #        'name': str(self.file_name),
-    #        'datas': self.binary_field_name,
-    #        'datas_fname': self.file_name,
-    #        'res_model': 'job.certifica',
-    #         'type': 'binary'
-    #        }
-    #    id = self.env['ir.attachment'].create(attachment)
-    #    email_template.attachment_ids = [(4, ir_id.id)]
-    #    email_template.send_mail(self.id, raise_exception=False, force_send=True)
-    #    email_template.attachment_ids = [(3, ir_id.id)]

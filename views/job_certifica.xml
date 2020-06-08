@@ -20,15 +20,18 @@
                     </div>
                         <group col="2">
                             <group >
-                                <field name="company_name" />
+                                <field name="company_id"/>
+                                <field name="employee_id"/>
                                 <field name="cnss_number"/>
-                                <field name="hire_date" />
+                                <field name="date_hire"/>
                             </group>
                             <group>
-                                <field name="employee_name"/>
                                 <field name="email_id"/>
-                                <field name="occupied_job"/>
+                                <field name="fiche_poste"/>
                                 <field name="manager"/>
+                                <field name="contrat"/>
+                                <field name="demand_date"/>
+                                <field name="send_date"/> 
                             </group>
                         </group>
                 </sheet>
@@ -42,11 +45,14 @@
             <field name="model">job.certifica</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="company_name"/>
+                    <field name="company_id"/>
                     <field name="cnss_number"/>
-                    <field name="hire_date"/>
-                    <field name="occupied_job"/>
+                    <field name="employee_id"/>
+                    <field name="fiche_poste"/>
                     <field name="manager"/>
+                    <field name="contrat"/>
+                    <field name="demand_date"/>
+                    <field name="send_date"/> 
                 </tree> 
             </field>
         </record>
@@ -73,7 +79,20 @@
     action="attestation_list_action"
     groups ="base.group_user"/>
 
-    <!--menuitem 
+    <!--record id="view_hr_employee_inherit" model="ir.ui.view">
+                <field name="name">hr.employee.form.inherit</field>
+                <field name="model">hr.employee</field>
+                <field name="inherit_id" ref="hr.view_employee_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="/form/sheet/group/group/field[@name='parent_id']" position="after">
+                        <field name="contrat_id"/>
+                     </xpath>
+                </field>
+    </record-->
+                     
+                     
+                     
+                     <!--menuitem 
     parent="attetstation_list_menu"
     id="attetstation_list_menu_item" 
     sequence="2"/-->

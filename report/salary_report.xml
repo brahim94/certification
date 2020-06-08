@@ -33,12 +33,12 @@
 			 </div>
 
 			<div style="position:relative;left:70.82px;top:270.26px">
-				<span>Nous soussignés, société <span t-field="o.company"/> à Casablanca, certifions que : </span>
+				<span>Nous soussignés, société <span t-field="o.company_id"/> à Casablanca, certifions que : </span>
 			</div>
 
 			<div style="position:absolute;left:375px;top:325.97px;text-align:center;">
 				<u><span class="cls_017">Mr.</span>
-				<span t-field="o.employee"/></u>
+				<span t-field="o.employee_id"/></u>
 			
 			</div>
 

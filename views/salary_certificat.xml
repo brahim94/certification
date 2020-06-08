@@ -20,8 +20,8 @@
                     </div>
                         <group col="2">
                             <group >
-                                <field name="company" />
-                                <field name="employee"/>
+                                <field name="company_id" />
+                                <field name="employee_id"/>
                                 <field name="email_id"/>
                                 <field name="manager"/>
                             </group>
@@ -43,8 +43,8 @@
             <field name="model">salary.certifica</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="company"/>
-                    <field name="employee"/>
+                    <field name="company_id"/>
+                    <field name="employee_id"/>
                     <field name="email_id"/>
                     <field name="manager"/>
                     <field name="hire"/>

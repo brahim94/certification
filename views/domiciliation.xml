@@ -20,8 +20,8 @@
                     </div>
                         <group col="2">
                             <group >
-                                <field name="company" />
-                                <field name="employee"/>
+                                <field name="company_id" />
+                                <field name="employee_id"/>
                                 <field name="email"/>
                                 <field name="manager"/>
                             </group>

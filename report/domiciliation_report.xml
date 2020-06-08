@@ -33,14 +33,14 @@
                 </div>
 
                 <div style="position:relative;left:70.82px;top:270.26px">
-                    <span>Nous soussignés, société <span t-field="o.company"/> à Casablanca, nous nous engageons à virer mensuellement 
+                    <span>Nous soussignés, société <span t-field="o.company_id"/> à Casablanca, nous nous engageons à virer mensuellement 
                     et irrévocablement le salaire intégral et toutes indemnités à compter 
                     <p>de mois <span t-field="o.months_number"/>: </p></span>
                 </div>
 
                 <div style="position:absolute;left:350px;top:380.97px;text-align:center;">
                     <u><span class="cls_017">Mr.</span>
-                    <span t-field="o.employee"/></u>
+                    <span t-field="o.employee_id"/></u>
                 </div>
 
                 <div style="position:relative;left:70.82px;top:340px" class="cls_004">

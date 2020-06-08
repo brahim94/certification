@@ -33,23 +33,23 @@
 			 </div>
 
 			<div style="position:relative;left:70.82px;top:270.26px">
-				<span>Nous soussignés, société <span t-field="o.company_name"/> à Casablanca, certifions que : </span>
+				<span>Nous soussignés, société <span t-field="o.company_id"/> à Casablanca, certifions que : </span>
 			</div>
 
 			<div style="position:absolute;left:375px;top:325.97px;text-align:center;">
 				<u><span class="cls_017">Mr.</span>
-				<span t-field="o.employee_name"/></u>
+				<span t-field="o.employee_id"/></u>
 				<p class="cls_009">(C.N.S.S. N° 
 				<span t-field="o.cnss_number"/>)</p>
 			</div>
 
 			<div style="position:relative;left:70.82px;top:420px" class="cls_004">
-				<span class="cls_004">Est employé au sein de notre société depuis le  </span><span t-field="o.hire_date"/>
+				<span class="cls_004">Est employé au sein de notre société depuis le  </span><span t-field="o.date_hire"/>
 			</div>
 
 			<div style="position:relative;left:70.82px;top:470px" class="cls_012">
 				<span class="cls_012">Actuellement, il occupe la fonction de  </span>
-				<span t-field="o.occupied_job"/>
+				<span t-field="o.fiche_poste"/>
 			</div>
 
 			<div style="position:relative;left:70.82px;top:520px" class="cls_004">
