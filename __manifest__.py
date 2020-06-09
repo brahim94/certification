@@ -27,10 +27,10 @@
     'data': [
         'security/ir.model.access.csv',
         'data/sequence.xml',
-        #'data/mail_template.xml',
         'report/job_report.xml',
         'report/salary_report.xml',
         'report/domiciliation_report.xml',
+        'data/mail_template.xml',
         'views/job_certifica.xml',
         'views/salary_certificat.xml',
         'views/domiciliation.xml',

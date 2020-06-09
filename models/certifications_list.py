@@ -2,6 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import fields, models, api
+from datetime import datetime
 
 
 class Job_Certification(models.Model):
@@ -20,12 +21,22 @@ class Job_Certification(models.Model):
     send_date = fields.Datetime(string="Date envoi")
     employee_id = fields.Many2one('hr.employee', string="Employee")
     email_id = fields.Char(string="Email")
+    date_hire = fields.Date(string="Date d'embauche")
     state = fields.Selection([
         ('brouillon', 'Brouillion'),
         ('valide', 'Validé'),
         ('envoyer', 'Envoyé'),
         ], setting='State', readonly=True, default='brouillon') 
     
+    #def _get_default_email(self):
+        #return self.env['hr.employee'].search([('name', '=', 'work_email')], limit=1).id
+
+    #email_id = fields.Many2one('hr.employee', string='Email', default=_get_default_email, domain=[('name', '=', 'work_email')])
+    
+    #@api.onchange('employee_id')
+    #def onchange_email_id(self):
+        #self.email_id = self.employee_id.work_email
+        
     def _get_default_contrat(self):
         return self.env['hr.contract'].search([], limit=1).id
 
@@ -44,10 +55,10 @@ class Job_Certification(models.Model):
     def onchange_id(self):
         self.fiche_poste = self.employee_id.job_id
     
-    def _get_default_hire(self):
-        return self.env['hr.contract'].search([('name', '=', 'date_start')], limit=1).id
+    #def _get_default_hire(self):
+        #return self.env['hr.contract'].search([('name', '=', 'date_start')], limit=1).id
 
-    date_hire = fields.Many2one('hr.contract', string="date d'embauche", default=_get_default_hire, domain=[('name', '=', 'date_start')])
+    #date_hire = fields.Many2one('hr.contract', string="date d'embauche", default=_get_default_hire, domain=[('name', '=', 'date_start')])
     
     @api.onchange('employee_id')
     def onchange_hire_id(self):
@@ -145,9 +156,9 @@ class domiciliation_certification(models.Model):
     )
     employee_id = fields.Many2one('hr.employee', string="Employee")
     email = fields.Char(string="Email")
-    write_date = fields.Date(string='Write Date')
     demand_date = fields.Datetime(string="Date demande")
     send_date = fields.Datetime(string="Date envoi")
+    write_date = fields.Date(string='Write Date')
     months_number = fields.Integer(string='N° Mois')
     name_bank = fields.Char(string='Banque')
     name_agency = fields.Char(string='Agence')
@@ -157,6 +168,12 @@ class domiciliation_certification(models.Model):
     ('valide', 'Validé'),
     ('envoyer', 'Envoyé'),
     ], setting='State', readonly=True, default='brouillon')
+
+    #@api.depends('demand_date')
+    #def _get_month(self):
+        #month = datetime.strptime(self.demand_date, '%Y-%m-%d').strftime('%m')
+        #for record in self:
+            #record['months_number'] = datetime.strftime(datetime.strptime(demand_date, "%Y-%m-%d"))
 
     def _get_default_manager(self):
         return self.env['hr.employee'].search([('name', '=', 'parent_id')], limit=1).id
@@ -187,6 +204,10 @@ class domiciliation_certification(models.Model):
         template.send_mail(self.id, force_send=True)
         self.state = 'envoyer'
 
+    #def _get_month(self, date):
+        #"""Get month from date"""
+        #return datetime.strftime(datetime.strptime(date, "%Y-%m-%d"), "%m")    
+        #self.month = _get_month(self.date)
     
 
     

@@ -58,7 +58,7 @@
         </record>
 
         <record model="ir.actions.act_window" id="attestation_list_action">
-            <field name="name">Atestation de travail</field>
+            <field name="name">Attestation de travail</field>
             <field name="res_model">job.certifica</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
@@ -66,13 +66,13 @@
             </field>
         </record>
 
-    <menuitem name="Atestations" 
+    <menuitem name="Attestations" 
     id="menu_root" 
     sequence="115" 
     groups="base.group_user" 
     web_icon="attetstation,static/description/icon.png"/>
 
-    <menuitem name="Atestation de Travail"  
+    <menuitem name="Attestation de Travail"  
     parent="menu_root" 
     id="attetstation_list_menu" 
     sequence="100" 

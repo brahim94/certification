@@ -33,17 +33,17 @@
                 </div>
 
                 <div style="position:relative;left:70.82px;top:270.26px">
-                    <span>Nous soussignés, société <span t-field="o.company_id"/> à Casablanca, nous nous engageons à virer mensuellement 
-                    et irrévocablement le salaire intégral et toutes indemnités à compter 
-                    <p>de mois <span t-field="o.months_number"/>: </p></span>
+                    <span>Nous soussignés, société <span t-field="o.company_id"/> à Casablanca. <br>nous nous engageons à virer mensuellement 
+                    et irrévocablement le salaire intégral </br> <br>et toutes indemnités à compter de mois : <span t-field="o.months_number"/> </br>
+                    </span>
                 </div>
 
-                <div style="position:absolute;left:350px;top:380.97px;text-align:center;">
+                <div style="position:absolute;left:400px;top:380.97px;text-align:center;">
                     <u><span class="cls_017">Mr.</span>
                     <span t-field="o.employee_id"/></u>
                 </div>
 
-                <div style="position:relative;left:70.82px;top:340px" class="cls_004">
+                <div style="position:relative;left:70.82px;top:350px" class="cls_004">
                     <span class="cls_004">À son compte ouvert à <span t-field="o.name_bank"/> - <span t-field="o.name_agency"/>
                     , sous le Numéro : </span>
                 </div>
@@ -52,7 +52,7 @@
                     <h4 t-field="o.rib_number"/>
                 </div>
                 
-                <div style="position:relative;left:70.82px;top:410.97px" class="cls_004">    
+                <div style="position:relative;left:70.82px;top:440.97px" class="cls_004">    
                      Et ce jusqu’à main levée délivrée en bonne et due forme par la banque.
                 </div>   
                    
