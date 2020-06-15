@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='leave_certifica_view_form' model='ir.ui.view'>
+            <field name="name">leave.certifica.form</field>
+            <field name="model">leave.certifica</field>
+            <field name="arch" type="xml">
+               <form>
+                <header>
+                    <button name="action_validate_leave" type="object" string="Valider" states="brouillon" class="oe_highlight"/>
+                    <button name="print_leave" string="Imprimer" type="object" states="valide" class="oe_highlight"/>
+                    <button name="send_leave_certifica" string="Envoyer" type="object" states="valide" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class='oe_title'>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                        <group col="2">
+                            <group >
+                                <field name="company_id" />
+                                <field name="employee_id"/>
+                                <field name="cnss_number"/>
+                                <field name="email_id"/>
+                                <field name="manager"/>
+                            </group>
+                            <group>
+                                <field name="leave_date_start"/>
+                                <field name="leave_date_end"/>                                
+                            </group>
+                        </group>
+                </sheet>
+             </form>
+            </field>
+        </record>
+
+
+        <record id="salary_certifica_view_tree" model="ir.ui.view">
+            <field name="name">leave.certifica.tree</field>
+            <field name="model">leave.certifica</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_id"/>
+                    <field name="employee_id"/>
+                    <field name="email_id"/>
+                    <field name="manager"/>
+                    <field name="leave_date_start"/>
+                    <field name="leave_date_end"/>
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="attestation_leave_action">
+            <field name="name">Atestation de congé</field>
+            <field name="res_model">leave.certifica</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> créer votre première Atestation de congé </p>
+            </field>
+        </record>
+
+
+    <menuitem name="Attestation de congé"
+    parent="menu_root"
+    id="attetstation_list_menu_for"
+    sequence="103"
+    action="attestation_leave_action"
+    groups="base.group_user"/>
+
+    </odoo>

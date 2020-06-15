@@ -26,6 +26,29 @@
             <field name="company_id" eval="False"/>
         </record>
         
+        <record id="seq_leave_order" model="ir.sequence">
+            <field name="name">Leave Certifica Order</field>
+            <field name="code">leave.order</field>
+            <field name="prefix">ATSCONJ</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_work_order" model="ir.sequence">
+            <field name="name">Work Certifica Order</field>
+            <field name="code">work.order</field>
+            <field name="prefix">CERTWRK</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_notify_order" model="ir.sequence">
+            <field name="name">Notify Certifica Order</field>
+            <field name="code">notify.order</field>
+            <field name="prefix">NTFDPRT</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
 
     </data>
 </odoo>

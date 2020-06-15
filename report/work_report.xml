@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<report
+		id="action_report_work"
+		string="Certificat de travail"
+		model="work.certifica"
+		report_type="qweb-pdf"
+		name="attestation.work"
+		print_report_name="'Certificat de travail'"/>
+
+        <template id="work">
+        
+       <t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+			<t t-call="web.external_layout">
+			<style>
+			div {
+  					font-size: 115%;
+				}    
+			</style>
+
+			 <div style="position:absolute;left:0px;top:50.98px;width:20px">
+				<img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('EAN13', o.name, 500, 50)"/>
+			 </div>
+				
+			 <div style="position:absolute;left:200px;top:150.62px">
+			 <h1><u>CERTIFICAT DE TRAVAIL</u></h1>
+			 </div>
+            
+			 <div style="position:absolute;left:570.99px;top:5.98px">
+				<span>Casablanca, le <span t-field="o.write_date"/></span>
+			 </div>
+
+			<div style="position:relative;left:70.82px;top:270.26px">
+				<span>Nous soussignés, société <span t-field="o.company_id"/> à Casablanca, certifions que: </span>
+			</div>
+
+			<div style="position:absolute;left:375px;top:325.97px;text-align:center;">
+				<u><span class="cls_017">Mr.</span>
+				<span t-field="o.employee_id"/></u>
+				<p class="cls_009">(C.N.S.S. N° 
+				<span t-field="o.cnss_number"/>)</p>
+			</div>
+
+			<div style="position:relative;left:70.82px;top:420px" class="cls_004">
+				<br><span class="cls_004">A été employé de notre société du </span><span t-field="o.date_hire"/> au : <span t-field="o.date_leave"/> en qualité de <span t-field="o.fiche_poste"/></br>
+			</div>
+
+			<div style="position:relative;left:70.82px;top:520px" class="cls_004">
+				<span class="cls_004">La présente attestation est délivrée à l’intéressé sur sa demande pour servir <p> et valoir ce que de droit. </p></span>
+			</div>
+			
+			<div style="position:absolute;left:570.99px;top:820px;text-align:center;" class="cls_004">
+				<span class="cls_004">Directeur Ressources Humaines</span><p><span t-field="o.manager"/></p>
+			</div>
+			
+			</t>
+		</t>
+		</t>
+
+        </template>
+
+</odoo>

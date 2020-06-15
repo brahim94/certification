@@ -30,12 +30,19 @@
         'report/job_report.xml',
         'report/salary_report.xml',
         'report/domiciliation_report.xml',
+        'report/leave_report.xml',
+        'report/work_report.xml',
+        'report/notify_report.xml',
         'data/mail_template.xml',
         'views/job_certifica.xml',
         'views/salary_certificat.xml',
         'views/domiciliation.xml',
         'views/views.xml',
+        'views/leave_certifica.xml',
+        'views/work_certifica.xml',
+        'views/notify_leave.xml',
         'views/templates.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

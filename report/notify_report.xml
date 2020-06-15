@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<report
+		id="action_report_notify"
+		string="Notification de départ"
+		model="notify.certifica"
+		report_type="qweb-pdf"
+		name="attestation.notify"
+		print_report_name="'Notification de départ'"/>
+
+        <template id="notify">
+        
+       <t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+			<t t-call="web.external_layout">
+			<style>
+			div {
+  					font-size: 115%;
+				}    
+			</style>
+
+				<div style="position:absolute;left:570.99px;top:5.98px">
+				<span>Casablanca, le <span t-field="o.write_date"/></span>
+			 	</div>
+
+				<div style="position:absolute;left:570.99px;top:27.98px">
+				<span>Banque <span t-field="o.name_bank"/></span>
+			 	</div>
+
+				<div style="position:absolute;left:570.99px;top:49.98px">
+				<span>Agence <span t-field="o.name_agency"/></span>
+			 	</div>
+
+
+				<div style="position:absolute;top:150.62px">
+			 	<h4><u>Objet : NOTIFICATION DU DÉPART D’UN EMPLOYÉ</u></h4>
+			 	</div>
+
+				<div style="position:absolute;top:193.62px">
+			 	Monsieur, Madame
+			 	</div>
+
+				<div style="position:relative;left:70.82px;top:270.26px">
+				<span>Nous vous informons par la présente que Mr. <span t-field="o.employee_id"/> CIN: <span t-field="o.cin_number"/>ne travaille plus dans notre entreprise et ce depuis <span t-field="o.date_leave"/></span>
+				</div>
+
+				<div style="position:absolute;top:303.62px">
+			 	Nous vous prie d'agréer, Madame, Monsieur, l'assurance de nos sincères considérations
+			 	</div>
+
+				<div style="position:absolute;left:570.99px;top:820px;text-align:center;" class="cls_004">
+				<span class="cls_004">Directeur Ressources Humaines</span><p><span t-field="o.manager"/></p>
+			</div>
+			</t>
+		</t>
+		</t>
+
+        </template>
+
+</odoo>

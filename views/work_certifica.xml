@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id='work_certifica_view_form' model='ir.ui.view'>
+            <field name="name">work.certifica.form</field>
+            <field name="model">work.certifica</field>
+            <field name="arch" type="xml">
+               <form>
+                <header>
+                    <button name="action_validate_work" type="object" string="Valider" states="brouillon" class="oe_highlight"/>
+                    <button name="print_work" string="Imprimer" type="object" states="valide" class="oe_highlight"/>
+                    <button name="send_work_certifica" string="Envoyer" type="object" states="valide" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class='oe_title'>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                        <group col="2">
+                            <group >
+                                <field name="company_id" />
+                                <field name="employee_id"/>
+                                <field name="cnss_number"/>
+                                <field name="fiche_poste"/>
+                                <field name="email_id"/>
+                                <field name="manager"/>
+                            </group>
+                            <group>
+                                <field name="contrat"/>
+                                <field name="date_hire"/>   
+                                <field name="date_leave"/>                              
+                            </group>
+                        </group>
+                </sheet>
+             </form>
+            </field>
+        </record>
+
+
+        <record id="work_certifica_view_tree" model="ir.ui.view">
+            <field name="name">work.certifica.tree</field>
+            <field name="model">work.certifica</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_id"/>
+                    <field name="employee_id"/>
+                    <field name="email_id"/>
+                    <field name="manager"/>
+                    <field name="fiche_poste"/>
+                    <field name="cnss_number"/>
+                    <field name="date_hire"/>   
+                    <field name="date_leave"/>
+                </tree> 
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="attestation_work_action">
+            <field name="name">Certificat de travail</field>
+            <field name="res_model">work.certifica</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                    <p class="oe_view_nocontent_smiling_face"> créer votre première certificat de travail </p>
+            </field>
+        </record>
+
+
+    <menuitem name="Certificat de travail"
+    parent="menu_root"
+    id="attetstation_list_menu_five"
+    sequence="105"
+    action="attestation_work_action"
+    groups="base.group_user"/>
+
+    </odoo>
