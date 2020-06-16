@@ -19,13 +19,14 @@
                         </h1>
                     </div>
                         <group col="2">
-                            <group >
+                            <group>
                                 <field name="company_id" />
                                 <field name="employee_id"/>
                                 <field name="email_id"/>
                                 <field name="manager"/>
                             </group>
                             <group>
+                                 <field name="contrat" invisible="1"/>
                                 <field name="hire"/>
                                 <field name="salary_date_create"/>
                                 <field name="amount_money"/>
@@ -38,7 +39,7 @@
         </record>
 
 
-        <record id="salary_certifica_view_tree" model="ir.ui.view">
+        <record id="salarry_certifica_view_tree" model="ir.ui.view">
             <field name="name">salary.certifica.tree</field>
             <field name="model">salary.certifica</field>
             <field name="arch" type="xml">
