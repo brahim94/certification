@@ -24,32 +24,32 @@
 				<span>Casablanca, le <span t-field="o.write_date"/></span>
 			 	</div>
 
-				<div style="position:absolute;left:570.99px;top:27.98px">
+				<div style="position:absolute;left:570.99px;top:77.98px">
 				<span>Banque <span t-field="o.name_bank"/></span>
 			 	</div>
 
-				<div style="position:absolute;left:570.99px;top:49.98px">
+				<div style="position:absolute;left:570.99px;top:107.98px">
 				<span>Agence <span t-field="o.name_agency"/></span>
 			 	</div>
 
 
-				<div style="position:absolute;top:150.62px">
+				<div style="position:absolute;top:260.62px">
 			 	<h4><u>Objet : NOTIFICATION DU DÉPART D’UN EMPLOYÉ</u></h4>
 			 	</div>
 
-				<div style="position:absolute;top:193.62px">
+				<div style="position:absolute;top:333.62px">
 			 	Monsieur, Madame
 			 	</div>
 
-				<div style="position:relative;left:70.82px;top:270.26px">
-				<span>Nous vous informons par la présente que Mr. <span t-field="o.employee_id"/> CIN: <span t-field="o.cin_number"/>ne travaille plus dans notre entreprise et ce depuis <span t-field="o.date_leave"/></span>
+				<div style="position:relative;top:411.26px">
+				<span>Nous vous informons par la présente que Mr. <span t-field="o.employee_id"/> CIN: <span t-field="o.cin_number"/> ne travaille plus dans notre entreprise et ce depuis <span t-field="o.date_leave"/></span>
 				</div>
 
-				<div style="position:absolute;top:303.62px">
+				<div style="position:absolute;top:554.62px">
 			 	Nous vous prie d'agréer, Madame, Monsieur, l'assurance de nos sincères considérations
 			 	</div>
 
-				<div style="position:absolute;left:570.99px;top:820px;text-align:center;" class="cls_004">
+				<div style="position:absolute;left:550.99px;top:820px;text-align:center;" class="cls_004">
 				<span class="cls_004">Directeur Ressources Humaines</span><p><span t-field="o.manager"/></p>
 			</div>
 			</t>

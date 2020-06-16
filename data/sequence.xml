@@ -37,7 +37,7 @@
         <record id="seq_work_order" model="ir.sequence">
             <field name="name">Work Certifica Order</field>
             <field name="code">work.order</field>
-            <field name="prefix">CERTWRK</field>
+            <field name="prefix">CERTRV</field>
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>
         </record>
@@ -46,7 +46,7 @@
             <field name="name">Notify Certifica Order</field>
             <field name="code">notify.order</field>
             <field name="prefix">NTFDPRT</field>
-            <field name="padding">4</field>
+            <field name="padding">5</field>
             <field name="company_id" eval="False"/>
         </record>
 

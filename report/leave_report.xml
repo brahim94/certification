@@ -24,11 +24,11 @@
 				<img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('EAN13', o.name, 500, 50)"/>
 			 </div>
 				
-			 <div style="position:absolute;left:200px;top:150.62px">
+			 <div style="position:absolute;left:230px;top:150.62px;text-align:center">
 			 <h1><u>ATTESTATION DE CONGÉ</u></h1>
 			 </div>
             
-			 <div style="position:absolute;left:570.99px;top:5.98px">
+			 <div style="position:absolute;left:610.99px;top:5.98px;text-align:right">
 				<span>Casablanca, le <span t-field="o.write_date"/></span>
 			 </div>
 

@@ -24,11 +24,11 @@
 				<img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('EAN13', o.name, 500, 50)"/>
 			 </div>
 				
-			 <div style="position:absolute;left:200px;top:150.62px">
+			 <div style="position:absolute;left:230px;top:150.62px;text-align:center">
 			 <h1><u>CERTIFICAT DE TRAVAIL</u></h1>
 			 </div>
             
-			 <div style="position:absolute;left:570.99px;top:5.98px">
+			 <div style="position:absolute;left:610.99px;top:5.98px;text-align:right">
 				<span>Casablanca, le <span t-field="o.write_date"/></span>
 			 </div>
 
@@ -36,7 +36,7 @@
 				<span>Nous soussignés, société <span t-field="o.company_id"/> à Casablanca, certifions que: </span>
 			</div>
 
-			<div style="position:absolute;left:375px;top:325.97px;text-align:center;">
+			<div style="position:absolute;left:375px;top:325.97px;text-align:center">
 				<u><span class="cls_017">Mr.</span>
 				<span t-field="o.employee_id"/></u>
 				<p class="cls_009">(C.N.S.S. N° 
@@ -44,7 +44,7 @@
 			</div>
 
 			<div style="position:relative;left:70.82px;top:420px" class="cls_004">
-				<br><span class="cls_004">A été employé de notre société du </span><span t-field="o.date_hire"/> au : <span t-field="o.date_leave"/> en qualité de <span t-field="o.fiche_poste"/></br>
+				<br><span class="cls_004">A été employé de notre société du </span><span t-field="o.date_hire"/> au : <span t-field="o.date_leave"/> <br>en qualité de <span t-field="o.fiche_poste"/></br></br>
 			</div>
 
 			<div style="position:relative;left:70.82px;top:520px" class="cls_004">

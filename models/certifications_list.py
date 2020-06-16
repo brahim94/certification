@@ -55,6 +55,9 @@ class Job_Certification(models.Model):
     def onchange_id(self):
         self.fiche_poste = self.employee_id.job_id
     
+    @api.onchange('employee_id')
+    def onchange_email_id(self):
+        self.email_id = self.employee_id.work_email
     #def _get_default_hire(self):
         #return self.env['hr.contract'].search([('name', '=', 'date_start')], limit=1).id
 
@@ -70,7 +73,7 @@ class Job_Certification(models.Model):
     manager = fields.Many2one('hr.employee', string='Manager', default=_get_default_manager, domain=[('name', '=', 'parent_id')])
     
     @api.onchange('employee_id')
-    def onchange_fuel_product_id(self):
+    def onchange_manager(self):
         self.manager = self.employee_id.parent_id
     
     @api.model 
@@ -123,6 +126,10 @@ class salary_certification(models.Model):
     @api.onchange('employee_id')
     def onchange_manager_id(self):
         self.manager = self.employee_id.parent_id
+
+    @api.onchange('employee_id')
+    def onchange_email_id(self):
+        self.email_id = self.employee_id.work_email
 
     @api.model 
     def create(self, vals):
@@ -180,6 +187,10 @@ class domiciliation_certification(models.Model):
 
     manager = fields.Many2one('hr.employee', string='Manager', default=_get_default_manager, domain=[('name', '=', 'parent_id')])
     
+    @api.onchange('employee_id')
+    def onchange_email_id(self):
+        self.email_id = self.employee_id.work_email
+
     @api.onchange('employee_id')
     def onchange_fuel_product_id(self):
         self.manager = self.employee_id.parent_id
@@ -241,6 +252,10 @@ class leave_certification(models.Model):
     def onchange_manager_id(self):
         self.manager = self.employee_id.parent_id
 
+    @api.onchange('employee_id')
+    def onchange_email_id(self):
+        self.email_id = self.employee_id.work_email
+
     @api.model 
     def create(self, vals):
         if vals.get('name', ('New')) == ('New'):
@@ -288,6 +303,10 @@ class work_certification(models.Model):
         return self.env['hr.contract'].search([], limit=1).id
 
     contrat = fields.Many2one('hr.contract', string='Contrat', default=_get_default_contrat, domain=[])
+    
+    @api.onchange('employee_id')
+    def onchange_contrat_id(self):
+        self.contrat = self.employee_id.contract_id 
 
     def _get_default_manager(self):
         return self.env['hr.employee'].search([('name', '=', 'parent_id')], limit=1).id
@@ -302,6 +321,10 @@ class work_certification(models.Model):
     def onchange_hire_id(self):
         self.date_hire = self.contrat.date_start
 
+    @api.onchange('employee_id')
+    def onchange_leave_id(self):
+        self.date_leave = self.contrat.date_end
+
     def _get_default_job(self): 
         return self.env['hr.job'].search([], limit=1).id
 
@@ -310,6 +333,10 @@ class work_certification(models.Model):
     @api.onchange('employee_id')
     def onchange_id(self):
         self.fiche_poste = self.employee_id.job_id
+
+    @api.onchange('employee_id')
+    def onchange_email_id(self):
+        self.email_id = self.employee_id.work_email
 
     @api.model 
     def create(self, vals):
@@ -374,6 +401,10 @@ class notify_certification(models.Model):
     def onchange_fuel_product_id(self):
         self.manager = self.employee_id.parent_id
 
+    @api.onchange('employee_id')
+    def onchange_email_id(self):
+        self.email_id = self.employee_id.work_email
+        
     @api.model 
     def create(self, vals):
         if vals.get('name', ('New')) == ('New'):
